@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
+import PropTypes from "prop-types";
 
 const Home = ({ posts }) => {
   return (
@@ -56,6 +57,13 @@ const Home = ({ posts }) => {
       ))}
     </div>
   );
+};
+
+//input validation
+
+Home.propTypes = {
+  //posts should be array and is required
+  posts: PropTypes.array.isRequired,
 };
 
 export default Home;
