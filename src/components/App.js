@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { getPosts } from "../api/index";
-import { About, Home, User } from "../pages";
+import { About, Error404, Home, Login, User } from "../pages";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
 
@@ -32,15 +32,23 @@ function App() {
     <div className="App">
       <Navbar />
       <Router>
-        <Route exact path="/">
-          <Home posts={posts} />
-        </Route>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        <Route path="/user">
-          <User />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Home posts={posts} />
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route path="/user">
+            <User />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route>
+            <Error404 />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
