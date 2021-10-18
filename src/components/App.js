@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { getPosts } from "../api/index";
-import { Home } from "../pages";
+import { About, Home, User } from "../pages";
 import Loader from "./Loader";
 import Navbar from "./Navbar";
 
@@ -30,7 +31,17 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Home posts={posts} />
+      <Router>
+        <Route exact path="/">
+          <Home posts={posts} />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+        <Route path="/user">
+          <User />
+        </Route>
+      </Router>
     </div>
   );
 }
