@@ -30,8 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <Router>
+        {/* use navbar inside router because we are using Link tag inside navbar */}
+        <Navbar />
         <Switch>
           <Route exact path="/">
             <Home posts={posts} />
